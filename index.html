@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="http://code.angularjs.org/1.2.6/angular.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+ </head>
+
+ <body  ng-app="myModule">
+
+ <div ng-controller="mycontroller">
+     <h1>{{mani}}</h1>
+
+
+<div class="infoalign">
+
+<input type="text" data-ng-show="editMode" data-ng-model="mani" data-ng-required />
+   <button type="submit" id="hideinfo" data-ng-hide="editMode" data-ng-click="editMode = true" class="btn btn-primary btn-sm">Edit</button>
+<button type="submit" data-ng-show="editMode" data-ng-click="editAppKey()" class="btn btn-primary btn-sm">Done</button>
+
+</div>
+
+
+
+<!-- <a class="btn btn-primary btn-lg" href="#" ng-click="save()">Edit</a> -->
+
+
+     <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Description</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="success" id="mani">
+            <td>1</td>
+            <td>Create Login Page</td>
+            <td>
+             <!--    <select ng-repeat="item in objects">
+                  <option value={{item.id}}>{{item.color}}</option>
+                </select> -->
+                <select ng-init="selectedName=names[0]" ng-options="item for item in names" ng-model="selectedName" ng-change="hasChanged()">
+                </select>
+            </td>
+          </tr>
+
+          <tr class="danger" id="mani1">
+            <td>2</td>
+            <td>Store Encryped passwords</td>
+            <td>
+
+                <select ng-init="selectedName1=names1[1]" ng-options="item1 for item1 in names1" ng-model="selectedName1" ng-change="hasChanged1()">
+                </select>
+
+
+
+            </td>
+          </tr>
+          <tr class="info" id="mani2">
+            <td>3</td>
+            <td>Design database tables for User model</td>
+            
+            <td>
+
+                <select ng-init="selectedName2=names2[2]" ng-options="item2 for item2 in names2" ng-model="selectedName2" ng-change="hasChanged2()">
+                </select>
+
+
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+
+
+</div>
+
+
+
+ </body> 
+
+
+
+
+
+
+
+
+
+<script>
+
+var app = angular
+            .module("myModule",[])
+            .controller('mycontroller',function($scope){
+
+        $scope.mani = "Issue tracker for BizAnalystics "
+
+
+
+
+
+
+    $scope.editAppKey = function() {
+        $scope.editMode = false;
+        $("#hideinfo").hide()
+    }
+
+
+
+
+
+
+
+
+        $scope.names = ['Done','Not Started','In Progress'];
+        $scope.hasChanged = function() {
+        if ($scope.selectedName == 'Done'){
+            $("#mani").attr('class', 'success');
+        }
+        else if ($scope.selectedName == 'Not Started'){
+            $("#mani").attr('class', 'danger');
+        }
+        else if ($scope.selectedName == 'In Progress'){
+            $("#mani").attr('class', 'info');
+        }
+        }
+
+
+        $scope.names1 = ['Done','Not Started','In Progress'];
+        $scope.hasChanged1 = function() {
+        if ($scope.selectedName1 == 'Done'){
+            $("#mani1").attr('class', 'success');
+        }
+        else if ($scope.selectedName1 == 'Not Started'){
+            $("#mani1").attr('class', 'danger');
+        }
+        else if ($scope.selectedName1 == 'In Progress'){
+            $("#mani1").attr('class', 'info');
+        }
+        }
+
+
+        $scope.names2 = ['Done','Not Started','In Progress'];
+
+        $scope.hasChanged2 = function() {
+        if ($scope.selectedName2 == 'Done'){
+            $("#mani2").attr('class', 'success');
+        }
+        else if ($scope.selectedName2 == 'Not Started'){
+            $("#mani2").attr('class', 'danger');
+        }
+        else if ($scope.selectedName2 == 'In Progress'){
+            $("#mani2").attr('class', 'info');
+        }
+        }
+
+
+        });
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ </html>
